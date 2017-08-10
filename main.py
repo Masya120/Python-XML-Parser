@@ -1,12 +1,14 @@
 import parser_class
 import xml_getter
+import os
 
 
 xfile = xml_getter.Xml_Get_File()
 
 parse_this = parser_class.Xml_Parser()
 
-parse_this.parser_method(xfile.file_reader('test.xml'))
+# Can be to a directory or a specific file
+path = './test/'
 
-
-# https://www.w3schools.com/xml/note.xml
+for filename in os.listdir(path):
+    parse_this.parser_method(xfile.file_reader(path + filename), str(filename))
